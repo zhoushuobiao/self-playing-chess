@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ab.lxoa.dao.mapper.LxMemoNoteListMapper" >
+  <resultMap id="BaseResultMap" type="com.ab.lxoa.dto.LxMemoNoteList" >
+    <id column="note_id" property="noteId" jdbcType="CHAR" />
+    <result column="note_name" property="noteName" jdbcType="VARCHAR" />
+    <result column="note_content" property="noteContent" jdbcType="LONGVARCHAR" />
+    <result column="menu_id" property="menuId" jdbcType="CHAR" />
+    <result column="sequence" property="sequence" jdbcType="SMALLINT" />
+    <result column="create_user_id" property="createUserId" jdbcType="CHAR" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="delflag" property="delflag" jdbcType="TINYINT" />
+
+  </resultMap>
+  <sql id="Base_Column_List" >
+    note_id, note_name,note_content, menu_id, sequence, create_user_id, create_time,update_time, delflag
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from lx_memo_note_list
+    where note_id = #{noteId,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from lx_memo_note_list
+    where note_id = #{noteId,jdbcType=CHAR}
+  </delete>
+  <insert id="insert" parameterType="com.ab.lxoa.dto.LxMemoNoteList" >
+    insert into lx_memo_note_list (note_id, note_name, note_content, menu_id,
+      sequence, create_user_id, create_time, update_time,
+      delflag)
+    values (#{noteId,jdbcType=CHAR}, #{noteName,jdbcType=VARCHAR} ,#{noteContent,jdbcType=LONGVARCHAR},
+    #{menuId,jdbcType=CHAR}, #{sequence,jdbcType=SMALLINT}, #{createUserId,jdbcType=CHAR},
+    #{createTime,jdbcType=TIMESTAMP},#{updateTime,jdbcType=TIMESTAMP},#{delflag,jdbcType=TINYINT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ab.lxoa.dto.LxMemoNoteList" >
+    insert into lx_memo_note_list
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="noteId != null" >
+        note_id,
+      </if>
+      <if test="noteName != null" >
+        note_name,
+      </if>
+      <if test="noteContent != null">
+        note_content,
+      </if>
+      <if test="menuId != null" >
+        menu_id,
+      </if>
+      <if test="sequence != null" >
+        sequence,
+      </if>
+      <if test="createUserId != null" >
+        create_user_id,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="delflag != null" >
+        delflag,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="noteId != null" >
+        #{noteId,jdbcType=CHAR},
+      </if>
+      <if test="noteName != null" >
+        #{noteName,jdbcType=VARCHAR},
+      </if>
+      <if test="noteContent != null" >
+        #{noteContent,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="menuId != null" >
+        #{menuId,jdbcType=CHAR},
+      </if>
+      <if test="sequence != null" >
+        #{sequence,jdbcType=SMALLINT},
+      </if>
+      <if test="createUserId != null" >
+        #{createUserId,jdbcType=CHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="delflag != null" >
+        #{delflag,jdbcType=TINYINT},
+      </if>
+    </trim>
+    ON DUPLICATE KEY UPDATE
+        note_name = VALUES(note_name),
+        note_content = VALUES(note_content),
+        update_time = VALUES(update_time)
+
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ab.lxoa.dto.LxMemoNoteList" >
+    update lx_memo_note_list
+    <set >
+      <if test="noteName != null" >
+        note_name = #{noteName,jdbcType=VARCHAR},
+      </if>
+      <if test="noteContent != null" >
+        note_content = #{noteContent,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="menuId != null" >
+        menu_id = #{menuId,jdbcType=CHAR},
+      </if>
+      <if test="sequence != null" >
+        sequence = #{sequence,jdbcType=SMALLINT},
+      </if>
+      <if test="createUserId != null" >
+        create_user_id = #{createUserId,jdbcType=CHAR},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="delflag != null" >
+        delflag = #{delflag,jdbcType=TINYINT},
+      </if>
+    </set>
+    where note_id = #{noteId,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ab.lxoa.dto.LxMemoNoteList" >
+    update lx_memo_note_list
+    set note_name = #{noteName,jdbcType=VARCHAR},
+      note_content = #{noteContent,jdbcType=LONGVARCHAR},
+      menu_id = #{menuId,jdbcType=CHAR},
+      sequence = #{sequence,jdbcType=SMALLINT},
+      create_user_id = #{createUserId,jdbcType=CHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      delflag = #{delflag,jdbcType=TINYINT}
+    where note_id = #{noteId,jdbcType=CHAR}
+  </update>
+
+  <select id="getNoteListByMenuId" resultMap="BaseResultMap">
+    SELECT
+    <include refid="Base_Column_List" />
+    FROM
+    lx_memo_note_list
+    WHERE 1=1
+    <if test="menuId != null and menuId != ''" >
+      AND menu_id = #{menuId}
+    </if>
+    <if test="userId != null" >
+      and create_user_id = #{userId}
+    </if>
+  </select>
+
+  <select id="queryMaxSequenceByMenuId" parameterType="java.lang.String" resultType="java.lang.Integer">
+    SELECT
+      sequence
+    FROM
+      lx_memo_note_list
+    WHERE
+    <if test="menuId != null and menuId != ''" >
+      menu_id = #{menuId,jdbcType=CHAR}
+    </if>
+    <if test="menuId == null or menuId == ''" >
+      (menu_id is null or menu_id = '')
+    </if>
+    AND
+      delflag = 1
+    ORDER BY
+      sequence desc
+    LIMIT 1
+  </select>
+</mapper>

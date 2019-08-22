@@ -1,0 +1,29 @@
+2019-08-22 10:12:15.256  INFO 9976 --- [main] com.ab.lxoa.web.LxoaWebApplication       : Starting LxoaWebApplication on zhoushuobiao-PC1 with PID 9976 (started by zhoushuobiao in D:\代码\个人\chess\self-playing-chess\lxoa)
+2019-08-22 10:12:15.257  INFO 9976 --- [main] com.ab.lxoa.web.LxoaWebApplication       : No active profile set, falling back to default profiles: default
+2019-08-22 10:12:16.154  INFO 9976 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8004 (http)
+2019-08-22 10:12:16.169  INFO 9976 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2019-08-22 10:12:16.170  INFO 9976 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet Engine: Apache Tomcat/9.0.12
+2019-08-22 10:12:16.176  INFO 9976 --- [main] o.a.catalina.core.AprLifecycleListener   : The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [C:\Program Files\Java\jdk1.8.0_201\bin;C:\Windows\Sun\Java\bin;C:\Windows\system32;C:\Windows;D:\软件\开发软件\IntelliJ IDEA 2019.2\jbr\\bin;D:\软件\开发软件\IntelliJ IDEA 2019.2\jbr\\bin\server;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files\Java\jdk1.8.0_201\bin;C:\Program Files\Java\jdk1.8.0_201\jre\bin;D:\软件\开发软件\Git\cmd;C:\Users\zhoushuobiao\AppData\Local\Microsoft\WindowsApps;;.]
+2019-08-22 10:12:16.286  INFO 9976 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/memo]   : Initializing Spring embedded WebApplicationContext
+2019-08-22 10:12:16.286  INFO 9976 --- [main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 986 ms
+2019-08-22 10:12:16.314  INFO 9976 --- [main] o.s.b.w.servlet.ServletRegistrationBean  : Servlet dispatcherServlet mapped to [/]
+2019-08-22 10:12:16.318  INFO 9976 --- [main] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'characterEncodingFilter' to: [/*]
+2019-08-22 10:12:16.318  INFO 9976 --- [main] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'apiFilter' to: [/*]
+2019-08-22 10:12:16.318  INFO 9976 --- [main] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'ApiFilter' to urls: [/*]
+2019-08-22 10:12:16.332  INFO 9976 --- [main] com.ab.lxoa.web.filter.ApiFilter         : class com.ab.lxoa.web.filter.ApiFilter init
+2019-08-22 10:12:16.332  INFO 9976 --- [main] com.ab.lxoa.web.filter.ApiFilter         : class com.ab.lxoa.web.filter.ApiFilter init
+2019-08-22 10:12:16.913  INFO 9976 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8004 (http) with context path '/memo'
+2019-08-22 10:12:16.916  INFO 9976 --- [main] com.ab.lxoa.web.LxoaWebApplication       : Started LxoaWebApplication in 1.984 seconds (JVM running for 2.651)
+2019-08-22 10:14:39.329  INFO 9976 --- [http-nio-8004-exec-3] o.a.c.c.C.[Tomcat].[localhost].[/memo]   : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2019-08-22 10:14:39.330  INFO 9976 --- [http-nio-8004-exec-3] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2019-08-22 10:14:39.334  INFO 9976 --- [http-nio-8004-exec-3] o.s.web.servlet.DispatcherServlet        : Completed initialization in 4 ms
+2019-08-22 10:14:39.339  INFO 9976 --- [http-nio-8004-exec-3] com.ab.lxoa.web.filter.ApiFilter         : =================class com.ab.lxoa.web.filter.ApiFilter======================
+2019-08-22 10:14:39.339  INFO 9976 --- [http-nio-8004-exec-3] com.ab.lxoa.web.filter.ApiFilter         : class com.ab.lxoa.web.filter.ApiFilter doFilter 
+2019-08-22 10:14:39.340  INFO 9976 --- [http-nio-8004-exec-3] com.ab.lxoa.web.filter.ApiFilter         : =================class com.ab.lxoa.web.filter.ApiFilter======================
+2019-08-22 10:14:39.340  INFO 9976 --- [http-nio-8004-exec-3] com.ab.lxoa.web.filter.ApiFilter         : class com.ab.lxoa.web.filter.ApiFilter doFilter 
+2019-08-22 10:14:42.408  INFO 9976 --- [http-nio-8004-exec-1] com.ab.lxoa.web.filter.ApiFilter         : =================class com.ab.lxoa.web.filter.ApiFilter======================
+2019-08-22 10:14:42.408  INFO 9976 --- [http-nio-8004-exec-1] com.ab.lxoa.web.filter.ApiFilter         : class com.ab.lxoa.web.filter.ApiFilter doFilter 
+2019-08-22 10:14:42.408  INFO 9976 --- [http-nio-8004-exec-1] com.ab.lxoa.web.filter.ApiFilter         : =================class com.ab.lxoa.web.filter.ApiFilter======================
+2019-08-22 10:14:42.408  INFO 9976 --- [http-nio-8004-exec-1] com.ab.lxoa.web.filter.ApiFilter         : class com.ab.lxoa.web.filter.ApiFilter doFilter 
+2019-08-22 10:26:13.291  INFO 9976 --- [Thread-6] com.ab.lxoa.web.filter.ApiFilter         : class com.ab.lxoa.web.filter.ApiFilter destroy
+2019-08-22 10:26:13.291  INFO 9976 --- [Thread-6] com.ab.lxoa.web.filter.ApiFilter         : class com.ab.lxoa.web.filter.ApiFilter destroy
