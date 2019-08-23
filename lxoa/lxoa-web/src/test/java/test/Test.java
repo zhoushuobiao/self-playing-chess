@@ -12,6 +12,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicReference;
 import org.reflections.Reflections;
 import org.springframework.stereotype.Controller;
+import org.springframework.util.ResourceUtils;
 
 /**
  * @author shachor
@@ -69,7 +70,6 @@ public class Test {
                 System.out.println(a);
             }).run();
         }
-
 
 
         /*synchronized (test.class){

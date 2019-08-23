@@ -1,6 +1,5 @@
 package com.ab.lxoa.utils.redis;
 
-import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
@@ -10,8 +9,6 @@ import redis.clients.jedis.JedisPool;
 import redis.clients.jedis.JedisPoolConfig;
 
 import java.io.*;
-import java.util.ArrayList;
-import java.util.List;
 
 @Component
 public class JedisUtils {
@@ -43,61 +40,34 @@ public class JedisUtils {
         config.setTestOnBorrow(true);
         config.setTestOnReturn(true);
         config.setTestWhileIdle(true);
-
-        JedisPool jedisPool = new JedisPool(config, host, Integer.parseInt(port), Integer.parseInt(timeout));
-        return jedisPool;
+        return new JedisPool(config, host, Integer.parseInt(port), Integer.parseInt(timeout));
     }
 
     /**
      * 将对象-->byte[] (由于jedis中不支持直接存储object所以转换成byte[]存入)
-     *
-     * @param object
-     * @return
      */
     public static byte[] serialize(Object object) {
-        ObjectOutputStream oos = null;
-        ByteArrayOutputStream baos = null;
-        try {
+
+        try (ByteArrayOutputStream baos = new ByteArrayOutputStream();ObjectOutputStream oos = new ObjectOutputStream(baos);){
             // 序列化
-            baos = new ByteArrayOutputStream();
-            oos = new ObjectOutputStream(baos);
             oos.writeObject(object);
-            byte[] bytes = baos.toByteArray();
-            return bytes;
+            return baos.toByteArray();
         } catch (Exception e) {
-            logger.error("{}", e);
-        } finally {
-            try {
-                oos.close();
-                baos.close();
-            } catch (IOException e) {
-                logger.error("{}", e);
-            }
+            logger.error(String.valueOf(e));
         }
-        return null;
+        return new byte[0];
     }
 
     /**
      * 将byte[] -->Object
-     *
-     * @param bytes
-     * @return
      */
     public static Object unserialize(byte[] bytes) {
-        ByteArrayInputStream bais = null;
-        try {
+        try (ByteArrayInputStream bais = new ByteArrayInputStream(bytes);
+             ObjectInputStream ois = new ObjectInputStream(bais)){
             // 反序列化
-            bais = new ByteArrayInputStream(bytes);
-            ObjectInputStream ois = new ObjectInputStream(bais);
             return ois.readObject();
         } catch (Exception e) {
-            logger.error("{}", e);
-        } finally {
-            try {
-                bais.close();
-            } catch (IOException e) {
-                logger.error("{}", e);
-            }
+            logger.error(String.valueOf(e));
         }
         return null;
     }
