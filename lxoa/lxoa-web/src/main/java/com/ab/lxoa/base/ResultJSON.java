@@ -1,4 +1,4 @@
-package com.ab.lxoa.common;
+package com.ab.lxoa.base;
 
 /**
  * @ClassName:  ResultJSON   

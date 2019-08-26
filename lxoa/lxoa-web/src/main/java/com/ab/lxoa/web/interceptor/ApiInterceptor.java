@@ -1,15 +1,10 @@
 package com.ab.lxoa.web.interceptor;
 
-import com.ab.lxoa.common.HttpCodeConstant;
+import com.ab.lxoa.base.HttpCodeConstant;
 import com.ab.lxoa.constant.CommonConstant;
-import com.ab.lxoa.dto.LxMemoUser;
-import com.ab.lxoa.utils.redis.JedisUtils;
-import com.ab.lxoa.utils.security.UserUtils;
-import com.alibaba.fastjson.JSON;
 import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
@@ -20,16 +15,19 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
-
 /**
  * 一个简单的Interceptor拦截器类
- * @author shachor
+ * @author zhoushuobiao
  */
 @Component
 public class ApiInterceptor implements HandlerInterceptor {
+    private final Logger logger = LoggerFactory.getLogger(ApiInterceptor.class);
 
-    @Autowired
-    private JedisPool jedisPool;
+    private final JedisPool jedisPool;
+
+    public ApiInterceptor(JedisPool jedisPool) {
+        this.jedisPool = jedisPool;
+    }
 
     private void sendRedirect(HttpServletResponse response){
         PrintWriter writer = null;
@@ -48,7 +46,7 @@ public class ApiInterceptor implements HandlerInterceptor {
             writer.close();
         }
     }
-    private final Logger logger = LoggerFactory.getLogger(ApiInterceptor.class);
+
     @Override
     public boolean preHandle(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Object o) {
 
@@ -67,8 +65,6 @@ public class ApiInterceptor implements HandlerInterceptor {
         if(StringUtils.isNotBlank(loginToken)){
             byte[] userByte = jedisPool.getResource().get((CommonConstant.TOKEN_PRE+loginToken).getBytes());
             if(userByte != null){
-                LxMemoUser user = (LxMemoUser)JedisUtils.unserialize(userByte);
-                UserUtils.setUserInfo(user);
                 return true;
             }
         }

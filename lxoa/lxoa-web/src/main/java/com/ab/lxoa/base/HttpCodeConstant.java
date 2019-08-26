@@ -1,4 +1,4 @@
-package com.ab.lxoa.common;
+package com.ab.lxoa.base;
 /**
  * http状态码常量类
  * <br>包含返回错误信息类型编码

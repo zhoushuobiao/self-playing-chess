@@ -1,16 +1,20 @@
 package com.ab.lxoa.web.interceptor;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringBootConfiguration;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport;
 
-@SpringBootConfiguration
+/**
+ * @author zhoushuobiao
+ * todo @SpringBootConfiguration
+ */
 public class WebAppConfig extends WebMvcConfigurationSupport {
 
-    @Autowired
-    private ApiInterceptor apiInterceptor;
+    private final ApiInterceptor apiInterceptor;
+
+    public WebAppConfig(ApiInterceptor apiInterceptor) {
+        this.apiInterceptor = apiInterceptor;
+    }
 
     @Override
     public void addInterceptors(final InterceptorRegistry registry) {

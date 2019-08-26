@@ -11,7 +11,7 @@
 		<module>lxoa-dao</module>
 		<module>lxoa-web</module>
         <module>lxoa-utils</module>
-        <module>lxoa-dto</module>
+        <module>lxoa-model</module>
     </modules>
 	<packaging>pom</packaging>
 

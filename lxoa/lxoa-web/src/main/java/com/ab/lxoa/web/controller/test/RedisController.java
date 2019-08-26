@@ -1,6 +1,6 @@
 package com.ab.lxoa.web.controller.test;
 
-import com.ab.lxoa.common.ResultJSON;
+import com.ab.lxoa.base.ResultJSON;
 import com.ab.lxoa.web.controller.base.BaseController;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,9 +16,9 @@ import java.util.List;
 @RequestMapping("/redis")
 public class RedisController extends BaseController {
 
-    int i = 0;
+    private int i = 0;
 
-    List<String> list = new ArrayList<>();
+    private List<String> list = new ArrayList<>();
 
     @Autowired
     private JedisPool jedisPool;
