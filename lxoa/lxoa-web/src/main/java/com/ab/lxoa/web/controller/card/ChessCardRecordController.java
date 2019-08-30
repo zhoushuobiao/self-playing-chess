@@ -25,8 +25,8 @@ public class ChessCardRecordController extends BaseController {
 
     @RequestMapping("/saveRecord")
     public void saveRecord(CardRecordSaveRequest request, HttpServletResponse response){
-        chessCardRecordService.saveRecord(request);
-        sendJson(response,new ResultJSON());
+        int id = chessCardRecordService.saveRecord(request);
+        sendJson(response,new ResultJSON(id));
     }
 
     @RequestMapping("/queryRecord")

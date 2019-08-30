@@ -159,27 +159,27 @@
     from chess_card_record
     where 1=1
     <if test="bigField != null" >
-      AND BIG_FIELD = #{bigField,jdbcType=TINYINT},
+      AND BIG_FIELD = #{bigField,jdbcType=TINYINT}
     </if>
     <if test="smallField != null" >
-      AND SMALL_FIELD = #{smallField,jdbcType=TINYINT},
+      AND SMALL_FIELD = #{smallField,jdbcType=TINYINT}
     </if>
     <if test="levels != null" >
-      AND LEVELS = #{levels,jdbcType=TINYINT},
+      AND LEVELS = #{levels,jdbcType=TINYINT}
     </if>
     <if test="population != null" >
-      AND POPULATION = #{population,jdbcType=TINYINT},
+      AND POPULATION = #{population,jdbcType=TINYINT}
     </if>
     <if test="role1 != null" >
       AND
       ( ROLE_1 = #{role1,jdbcType=SMALLINT} OR
         ROLE_2 = #{role1,jdbcType=SMALLINT} OR
         ROLE_3 = #{role1,jdbcType=SMALLINT} OR
-        ROLE_4 = #{role1,jdbcType=SMALLINT}
+        ROLE_4 = #{role1,jdbcType=SMALLINT} )
     </if>
   </select>
 
-  <insert id="addCardRecord" parameterType="com.ab.lxoa.dto.ChessCardRecord" >
+  <insert id="addCardRecord" useGeneratedKeys="true" keyProperty="id" parameterType="com.ab.lxoa.dto.ChessCardRecord">
     insert into chess_card_record (BIG_FIELD, SMALL_FIELD,
       LEVELS, POPULATION, ROLE_1,
       ROLE_2, ROLE_3, ROLE_4,

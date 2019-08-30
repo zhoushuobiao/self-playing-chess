@@ -25,14 +25,17 @@ public class ChessCardRecordServiceImpl implements IChessCardRecordService {
     }
 
     @Override
-    public void saveRecord(CardRecordSaveRequest request) {
-        chessCardRecordMapper.addCardRecord(request.convert());
+    public int saveRecord(CardRecordSaveRequest request) {
+        ChessCardRecord cardRecord = request.convert();
+        chessCardRecordMapper.addCardRecord(cardRecord);
+        return cardRecord.getId();
     }
 
     @Override
     public QueryResponse<ChessCardRecord> queryRecord(CardRecordQueryRequest request) {
+        ChessCardRecord chessCardRecord = request.convert();
         PageHelper.startPage(request.getPage(),request.getPageSize());
-        List<ChessCardRecord> cardList = chessCardRecordMapper.queryCardByParam(request.convert());
+        List<ChessCardRecord> cardList = chessCardRecordMapper.queryCardByParam(chessCardRecord);
         return new QueryResponse<>(new PageInfo<>(cardList));
     }
 }

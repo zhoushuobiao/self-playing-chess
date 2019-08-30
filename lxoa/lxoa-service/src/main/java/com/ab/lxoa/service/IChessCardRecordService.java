@@ -14,7 +14,7 @@ public interface IChessCardRecordService {
      * 保存
      * @param request 记录数据
      */
-    void saveRecord(CardRecordSaveRequest request);
+    int saveRecord(CardRecordSaveRequest request);
 
     /**
      * 查询
