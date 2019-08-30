@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ab.lxoa.dao.mapper.ChessCardRecordMapper" >
+  <resultMap id="BaseResultMap" type="com.ab.lxoa.dto.ChessCardRecord" >
+    <id column="ID" property="id" jdbcType="INTEGER" />
+    <result column="BIG_FIELD" property="bigField" jdbcType="TINYINT" />
+    <result column="SMALL_FIELD" property="smallField" jdbcType="TINYINT" />
+    <result column="LEVELS" property="levels" jdbcType="TINYINT" />
+    <result column="POPULATION" property="population" jdbcType="TINYINT" />
+    <result column="ROLE_1" property="role1" jdbcType="SMALLINT" />
+    <result column="ROLE_2" property="role2" jdbcType="SMALLINT" />
+    <result column="ROLE_3" property="role3" jdbcType="SMALLINT" />
+    <result column="ROLE_4" property="role4" jdbcType="SMALLINT" />
+    <result column="CREATE_ID" property="createId" jdbcType="INTEGER" />
+    <result column="CREATE_TIME" property="createTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, BIG_FIELD, SMALL_FIELD, LEVELS, POPULATION, ROLE_1, ROLE_2, ROLE_3, ROLE_4, CREATE_ID, 
+    CREATE_TIME
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from chess_card_record
+    where ID = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from chess_card_record
+    where ID = #{id,jdbcType=INTEGER}
+  </delete>
+
+  <insert id="insertSelective" parameterType="com.ab.lxoa.dto.ChessCardRecord" >
+    insert into chess_card_record
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="bigField != null" >
+        BIG_FIELD,
+      </if>
+      <if test="smallField != null" >
+        SMALL_FIELD,
+      </if>
+      <if test="levels != null" >
+        LEVELS,
+      </if>
+      <if test="population != null" >
+        POPULATION,
+      </if>
+      <if test="role1 != null" >
+        ROLE_1,
+      </if>
+      <if test="role2 != null" >
+        ROLE_2,
+      </if>
+      <if test="role3 != null" >
+        ROLE_3,
+      </if>
+      <if test="role4 != null" >
+        ROLE_4,
+      </if>
+      <if test="createId != null" >
+        CREATE_ID,
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="bigField != null" >
+        #{bigField,jdbcType=TINYINT},
+      </if>
+      <if test="smallField != null" >
+        #{smallField,jdbcType=TINYINT},
+      </if>
+      <if test="levels != null" >
+        #{levels,jdbcType=TINYINT},
+      </if>
+      <if test="population != null" >
+        #{population,jdbcType=TINYINT},
+      </if>
+      <if test="role1 != null" >
+        #{role1,jdbcType=SMALLINT},
+      </if>
+      <if test="role2 != null" >
+        #{role2,jdbcType=SMALLINT},
+      </if>
+      <if test="role3 != null" >
+        #{role3,jdbcType=SMALLINT},
+      </if>
+      <if test="role4 != null" >
+        #{role4,jdbcType=SMALLINT},
+      </if>
+      <if test="createId != null" >
+        #{createId,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ab.lxoa.dto.ChessCardRecord" >
+    update chess_card_record
+    <set >
+      <if test="bigField != null" >
+        BIG_FIELD = #{bigField,jdbcType=TINYINT},
+      </if>
+      <if test="smallField != null" >
+        SMALL_FIELD = #{smallField,jdbcType=TINYINT},
+      </if>
+      <if test="levels != null" >
+        LEVELS = #{levels,jdbcType=TINYINT},
+      </if>
+      <if test="population != null" >
+        POPULATION = #{population,jdbcType=TINYINT},
+      </if>
+      <if test="role1 != null" >
+        ROLE_1 = #{role1,jdbcType=SMALLINT},
+      </if>
+      <if test="role2 != null" >
+        ROLE_2 = #{role2,jdbcType=SMALLINT},
+      </if>
+      <if test="role3 != null" >
+        ROLE_3 = #{role3,jdbcType=SMALLINT},
+      </if>
+      <if test="role4 != null" >
+        ROLE_4 = #{role4,jdbcType=SMALLINT},
+      </if>
+      <if test="createId != null" >
+        CREATE_ID = #{createId,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ab.lxoa.dto.ChessCardRecord" >
+    update chess_card_record
+    set BIG_FIELD = #{bigField,jdbcType=TINYINT},
+      SMALL_FIELD = #{smallField,jdbcType=TINYINT},
+      LEVELS = #{levels,jdbcType=TINYINT},
+      POPULATION = #{population,jdbcType=TINYINT},
+      ROLE_1 = #{role1,jdbcType=SMALLINT},
+      ROLE_2 = #{role2,jdbcType=SMALLINT},
+      ROLE_3 = #{role3,jdbcType=SMALLINT},
+      ROLE_4 = #{role4,jdbcType=SMALLINT},
+      CREATE_ID = #{createId,jdbcType=INTEGER},
+      CREATE_TIME = #{createTime,jdbcType=TIMESTAMP}
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+
+  <select id="queryCardByParam" parameterType="com.ab.lxoa.dto.ChessCardRecord" resultMap="BaseResultMap">
+    select
+        <include refid="Base_Column_List" />
+    from chess_card_record
+    where 1=1
+    <if test="bigField != null" >
+      AND BIG_FIELD = #{bigField,jdbcType=TINYINT}
+    </if>
+    <if test="smallField != null" >
+      AND SMALL_FIELD = #{smallField,jdbcType=TINYINT}
+    </if>
+    <if test="levels != null" >
+      AND LEVELS = #{levels,jdbcType=TINYINT}
+    </if>
+    <if test="population != null" >
+      AND POPULATION = #{population,jdbcType=TINYINT}
+    </if>
+    <if test="role1 != null" >
+      AND
+      ( ROLE_1 = #{role1,jdbcType=SMALLINT} OR
+        ROLE_2 = #{role1,jdbcType=SMALLINT} OR
+        ROLE_3 = #{role1,jdbcType=SMALLINT} OR
+        ROLE_4 = #{role1,jdbcType=SMALLINT} )
+    </if>
+  </select>
+
+  <insert id="addCardRecord" useGeneratedKeys="true" keyProperty="id" parameterType="com.ab.lxoa.dto.ChessCardRecord">
+    insert into chess_card_record (BIG_FIELD, SMALL_FIELD,
+      LEVELS, POPULATION, ROLE_1,
+      ROLE_2, ROLE_3, ROLE_4,
+      CREATE_ID, CREATE_TIME)
+    values (#{bigField,jdbcType=TINYINT}, #{smallField,jdbcType=TINYINT},
+      #{levels,jdbcType=TINYINT}, #{population,jdbcType=TINYINT}, #{role1,jdbcType=SMALLINT},
+      #{role2,jdbcType=SMALLINT}, #{role3,jdbcType=SMALLINT}, #{role4,jdbcType=SMALLINT},
+      #{createId,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP})
+  </insert>
+</mapper>

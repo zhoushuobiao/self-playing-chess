@@ -1,0 +1,5 @@
+com\ab\lxoa\request\CardRecordSaveRequest.class
+com\ab\lxoa\base\QueryResponse.class
+com\ab\lxoa\request\CardRecordQueryRequest.class
+com\ab\lxoa\dto\ChessCardRecord.class
+com\ab\lxoa\base\QueryRequest.class
